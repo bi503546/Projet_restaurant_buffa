@@ -2,7 +2,7 @@
   <div id="app">
     <h1>Gestion de restaurants</h1>
 
-    <img src="seperateur.png" alt="">
+    <img src="../css/img/seperateur.png" alt="">
     <h1>Total des restaurants : {{nbRestaurants}}</h1>
     <br>
     <div >
@@ -42,7 +42,7 @@
       <button class="button" v-on:click="pageSuivante" v-if="page < getDernierePage() - 1">></button>
       <button class="button" v-on:click="dernierePage" v-bind:class="{active : page === getDernierePage()}">Page {{getDernierePage()+1}}</button>
     </div>
-    <img src="seperateur.png" alt="">
+    <img src="../css/img/seperateur.png" alt="">
     <div id="modify" v-if="restaurantToModify !== null">
       <h2>Modifier un restaurant</h2>
       <form v-on:submit="modifierRestaurant">
