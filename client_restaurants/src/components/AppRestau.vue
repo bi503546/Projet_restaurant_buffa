@@ -14,11 +14,6 @@
           <br>
           <router-link :to="{ name: 'details', params: { id: restau._id }}">Plus de détails</router-link>
           <router-link :to="{ name: 'menu', params: { id: restau._id }}">Menu</router-link>
-          <img src="https://cdn.icon-icons.com/icons2/931/PNG/512/edit_modify_icon-icons.com_72390.png"
-               width="30" v-on:click="formModifierRestaurant(r._id)"/>
-
-          <img src="https://cdn.icon-icons.com/icons2/868/PNG/512/trash_bin_icon-icons.com_67981.png"
-               width="20" v-on:click="supprimerRestaurant(r._id)"/>
 
         </div>
         <img src="../css/img/up.png" class="fleche" v-if="detail === true" v-on:click="collapse">
@@ -65,12 +60,10 @@ export default {
   position : absolute;
   top : 8%;
   left : 30%;
-  
 }
 .imageSupp {
   position : absolute;
   top : 8%;
   right : 2%;
-  
 }
 </style>
