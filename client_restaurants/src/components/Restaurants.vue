@@ -2,7 +2,6 @@
   <div id="app">
     <h1>Gestion de restaurants</h1>
 
-    
     <h2>Total des restaurants : {{nbRestaurants}}</h2>
     <br>
     <div >
@@ -302,18 +301,5 @@ input:valid {
 .navigation{
     text-align: center;
     margin: auto;
-}
-
-.imageMod {
-  position : absolute;
-  top : 10%;
-  left : 30%;
-  
-}
-.imageSupp {
-  position : absolute;
-  top : 10%;
-  right : 2%;
-  
 }
 </style>
