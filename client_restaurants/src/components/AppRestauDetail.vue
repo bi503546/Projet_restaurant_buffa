@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    Adresse : {{restau}}
-    <md-button v-on:click.native="getMenu">Menu</md-button>
+    Adresse : {{restau.address.building}} {{restau.address.street}}, {{restau.borough}} {{restau.address.zipcode}}
+    <br><md-button v-on:click.native="getMenu">Menu</md-button>
   </div>
 </template>
 
@@ -10,7 +10,11 @@
 export default {
   name: 'app-restau-detail',
   props: {
+    id: String,
     restau: Object
+  },
+  mounted () {
+    console.log(this.id)
   },
   data: function () {
     return {

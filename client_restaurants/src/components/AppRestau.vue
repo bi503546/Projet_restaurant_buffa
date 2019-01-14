@@ -1,15 +1,19 @@
 <template>
   <div id="app">
-    <md-card v-on:click.native="getDetail">
+    <md-card>
       <md-card-header>
         <strong><i>{{restau.name}}</i></strong>
       </md-card-header>
       <md-card-content>
-        Nom : {{restau.name}} <br/>
-        Cuisine : {{restau.cuisine}}
-        <app-restau-detail v-if="detail === true" :restau="restau"></app-restau-detail>
-        <img src="../css/img/up.png" class="fleche" v-if="detail === true">
-        <img src="../css/img/down.png" class="fleche" v-if="detail === false">
+        Type de cuisine : {{restau.cuisine}}
+        <div v-if="detail === true">
+          Adresse : {{restau.address.building}} {{restau.address.street}}, {{restau.borough}} {{restau.address.zipcode}}
+          <br>
+          <md-button ><router-link :to="{ name: 'DétailsRestaurant', params: { id: restau._id }}">Plus de détails</router-link></md-button>
+          <md-button v-on:click.native="getMenu">Menu</md-button>
+        </div>
+        <img src="../css/img/up.png" class="fleche" v-if="detail === true" v-on:click="collapse">
+        <img src="../css/img/down.png" class="fleche" v-else v-on:click="collapse">
       </md-card-content>
     </md-card>
   </div>
@@ -31,7 +35,7 @@ export default {
     }
   },
   methods: {
-    getDetail () {
+    collapse () {
       if (this.detail === true) {
         this.detail = false
       } else {
