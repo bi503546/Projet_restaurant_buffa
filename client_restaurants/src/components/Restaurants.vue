@@ -33,9 +33,7 @@
     </p>
     <img src="../css/img/seperateur.png" alt="">
     <div class="miseEnFormeTable">
-      <app-restau  v-for="r in restaurants" :key="r.id" :restau="r">
-      
-      </app-restau>
+      <app-restau  v-for="r in restaurants" :key="r.id" :restau="r"></app-restau>
       
     </div>
     <div class="navigation" >
