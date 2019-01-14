@@ -8,8 +8,14 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/restaurant/:id',
-      name: 'DétailsRestaurant',
+      path: '/restaurants/details/:id',
+      name: 'details',
+      component: AppRestauDetail,
+      props: true
+    },
+    {
+      path: '/restaurants/menu/:id',
+      name: 'menu',
       component: AppRestauDetail,
       props: true
     },
