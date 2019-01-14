@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    Adresse : {{restau.address.building}} {{restau.address.street}}, {{restau.borough}} {{restau.address.zipcode}}
+    Adresse : {{id}}
     <br><md-button v-on:click.native="getMenu">Menu</md-button>
   </div>
 </template>
