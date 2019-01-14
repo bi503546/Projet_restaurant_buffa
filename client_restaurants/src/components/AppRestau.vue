@@ -9,8 +9,8 @@
         <div v-if="detail === true">
           Adresse : {{restau.address.building}} {{restau.address.street}}, {{restau.borough}} {{restau.address.zipcode}}
           <br>
-          <md-button ><router-link :to="{ name: 'DétailsRestaurant', params: { id: restau._id }}">Plus de détails</router-link></md-button>
-          <md-button v-on:click.native="getMenu">Menu</md-button>
+          <router-link :to="{ name: 'details', params: { id: restau._id }}">Plus de détails</router-link>
+          <router-link :to="{ name: 'menu', params: { id: restau._id }}">Menu</router-link>
           <img src="https://cdn.icon-icons.com/icons2/931/PNG/512/edit_modify_icon-icons.com_72390.png"
                width="30" v-on:click="formModifierRestaurant(r._id)"/>
 

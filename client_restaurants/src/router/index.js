@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Restaurants from '@/components/Restaurants'
 import AppRestauDetail from '@/components/AppRestauDetail'
+import AppRestauMenu from '@/components/AppRestauMenu'
 
 Vue.use(Router)
 
@@ -16,7 +17,7 @@ export default new Router({
     {
       path: '/restaurants/menu/:id',
       name: 'menu',
-      component: AppRestauDetail,
+      component: AppRestauMenu,
       props: true
     },
     {
