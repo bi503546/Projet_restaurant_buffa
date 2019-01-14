@@ -6,6 +6,9 @@
       </md-card-header>
       <md-card-content>
         Type de cuisine : {{restau.cuisine}}
+        <a class ="imageMod" href="#modify">
+            <img src="https://cdn.icon-icons.com/icons2/931/PNG/512/edit_modify_icon-icons.com_72390.png" width="30" v-on:click="formModifierRestaurant(r._id)"/> Modifier</a>
+        <img class ="imageSupp" src="https://cdn.icon-icons.com/icons2/868/PNG/512/trash_bin_icon-icons.com_67981.png" width="20" v-on:click="supprimerRestaurant(r._id)">
         <div v-if="detail === true">
           Adresse : {{restau.address.building}} {{restau.address.street}}, {{restau.borough}} {{restau.address.zipcode}}
           <br>
@@ -57,5 +60,17 @@ export default {
 .fleche {
   width: 20px;
   float: right;
+}
+.imageMod {
+  position : absolute;
+  top : 8%;
+  left : 30%;
+  
+}
+.imageSupp {
+  position : absolute;
+  top : 8%;
+  right : 2%;
+  
 }
 </style>

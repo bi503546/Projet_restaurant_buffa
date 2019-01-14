@@ -2,8 +2,7 @@
   <div id="app">
     <h1>Gestion de restaurants</h1>
 
-    <img src="../css/img/seperateur.png" alt="">
-    <h1>Total des restaurants : {{nbRestaurants}}</h1>
+    <h2>Total des restaurants : {{nbRestaurants}}</h2>
     <br>
     <div >
       <form v-on:submit="ajouterRestaurant" v-if="addForm">
@@ -32,8 +31,10 @@
                v-on:input="getRestaurantsFromServer()" v-model="pagesize"> : {{pagesize}}
       </label>
     </p>
+    <img src="../css/img/seperateur.png" alt="">
     <div class="miseEnFormeTable">
       <app-restau  v-for="r in restaurants" :key="r.id" :restau="r"></app-restau>
+      
     </div>
     <div class="navigation" >
       <button class="button" v-on:click="premierePage" v-bind:class="{active : page === 0}">Page 1</button>
@@ -250,5 +251,53 @@ export default {
 </script>
 
 <style>
+h1 {
 
+    color : grey;
+    font-size: 3rem;
+    font-family: Roboto;
+    font-style: italic;
+    text-align: center;
+}
+
+h2 {
+    margin : 12px; 
+    color : #565656;
+    font-size: 1.5rem;
+    font-family: Roboto,Noto Sans,-apple-system,BlinkMacSystemFont,sans-serif;
+    font-style: italic;
+}
+.header {
+  margin : 12px; 
+}
+input:invalid {
+    background-color: #F4C4BE;
+}
+
+input:valid {
+    background-color: #F1F1F1;
+}
+.button {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: rgb(134, 129, 127);
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 18px;
+    padding: 10px;
+    max-width: 120px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.button:hover {
+    font-weight: bold;
+    background-color: #565656;
+}
+.navigation{
+    text-align: center;
+    margin: auto;
+}
 </style>
