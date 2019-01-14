@@ -1,10 +1,11 @@
 <template>
   <div id="app">
-    <h1>Gestion de restaurants</h1>
 
-    <h2>Total des restaurants : {{nbRestaurants}}</h2>
-    <br>
-    <div >
+    <div id="entete">
+      <h1>Gestion de restaurants</h1>
+
+      <h2>Total des restaurants : {{nbRestaurants}}</h2>
+      <br>
       <form v-on:submit="ajouterRestaurant" v-if="addForm">
         <h2>Ajout Resataurant : </h2>
         <label>
@@ -20,21 +21,21 @@
       </form>
 
       <button class="button" v-else v-on:click="formAjouterRestaurant">Nouveau Restaurant </button>
+
+      <p>
+        <label> Recherche :
+          <input type="text" v-on:input="chercherRestaurants" v-model="name">
+        </label>
+        <br><br>
+        <label> Taille de la Page :
+          <input type="range" min="5" max="100" step="5" class="slider" id="myRange"
+                 v-on:input="getRestaurantsFromServer()" v-model="pagesize"> : {{pagesize}}
+        </label>
+      </p>
+      <img src="../css/img/seperateur.png" alt="">
     </div>
-    <p>
-      <label> Recherche :
-        <input type="text" v-on:input="chercherRestaurants" v-model="name">
-      </label>
-      <br><br>
-      <label> Taille de la Page :
-        <input type="range" min="5" max="100" step="5" class="slider" id="myRange"
-               v-on:input="getRestaurantsFromServer()" v-model="pagesize"> : {{pagesize}}
-      </label>
-    </p>
-    <img src="../css/img/seperateur.png" alt="">
     <div class="miseEnFormeTable">
       <app-restau  v-for="r in restaurants" :key="r.id" :restau="r"></app-restau>
-      
     </div>
     <div class="navigation" >
       <button class="button" v-on:click="premierePage" v-bind:class="{active : page === 0}">Page 1</button>
@@ -252,23 +253,34 @@ export default {
 
 <style>
 h1 {
-
     color : grey;
     font-size: 3rem;
     font-family: Roboto;
     font-style: italic;
     text-align: center;
 }
+#entete {
+  text-align: center;
+  padding: auto;
+}
+
+input[type=text], select, textarea {
+  width: 25%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
 
 h2 {
-    margin : 12px; 
+    margin : 12px;
     color : #565656;
     font-size: 1.5rem;
     font-family: Roboto,Noto Sans,-apple-system,BlinkMacSystemFont,sans-serif;
     font-style: italic;
 }
 .header {
-  margin : 12px; 
+  margin : 12px;
 }
 input:invalid {
     background-color: #F4C4BE;

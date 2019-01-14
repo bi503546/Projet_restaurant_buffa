@@ -1,7 +1,24 @@
 <template>
   <div id="app">
-    Restau : {{restaurant}}
-    <br><md-button v-on:click.native="getMenu">Menu</md-button>
+    <md-card>
+      <md-card-header>
+        {{restaurant.name}}
+      </md-card-header>
+      <md-card-content>
+        Cuisine : {{restaurant.cuisine}} <br>
+        Adresse : {{restaurant.address.building}} {{restaurant.address.street}},
+        {{restaurant.borough}} {{restaurant.address.zipcode}}
+      </md-card-content>
+      <md-card-content v-if="restaurant.grades !== null">
+        Grades :
+        <ul>
+          <li v-for="grade in restaurant.grades">
+            {{grade.grade}} <span style="color: grey; font-style: italic; font-size: 90%">( score of {{grade.score}} at {{grade.date}} )</span>
+          </li>
+        </ul>
+          <router-link :to="{ name: 'menu', params: { id: restaurant._id }}">Menu</router-link>
+      </md-card-content>
+    </md-card>
   </div>
 </template>
 
