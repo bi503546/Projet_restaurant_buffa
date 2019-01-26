@@ -7,8 +7,8 @@
       <md-card-content>
         Type de cuisine : {{restau.cuisine}}
         <a class ="imageMod" href="#modify">
-            <img src="https://cdn.icon-icons.com/icons2/931/PNG/512/edit_modify_icon-icons.com_72390.png" width="30" v-on:click="formModifierRestaurant(r._id)"/> Modifier</a>
-        <img class ="imageSupp" src="https://cdn.icon-icons.com/icons2/868/PNG/512/trash_bin_icon-icons.com_67981.png" width="20" v-on:click="supprimerRestaurant(r._id)">
+            <img src="../css/img/edit.png" width="30" v-on:click="modify()"/> Modifier</a>
+        <img class ="imageSupp" src="../css/img/delete.png" width="20" v-on:click="supprimerRestaurant(restau._id)">
         <div v-if="detail === true">
           Adresse : {{restau.address.building}} {{restau.address.street}}, {{restau.borough}} {{restau.address.zipcode}}
           <br>
@@ -26,6 +26,9 @@
 <script>
 
 import AppRestauDetail from './AppRestauDetail'
+
+let SERVER_URL = 'http://localhost:8080/'
+let RESOURCE = 'api/restaurants'
 
 export default {
   name: 'app-restau',
@@ -46,6 +49,28 @@ export default {
         this.detail = true
       }
       console.log(this.detail)
+    },
+
+    supprimerRestaurant (id) {
+      let url = SERVER_URL + RESOURCE + '/' + id
+
+      fetch(url, {
+        method: 'DELETE'
+      })
+        .then((responseJSON) => {
+          responseJSON.json()
+            .then((res) => {
+              console.log(res.msg)
+              this.getRestaurantsFromServer()
+            })
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    },
+
+    modify () {
+      this.$emit('toModify', this.restau._id)
     }
   }
 }

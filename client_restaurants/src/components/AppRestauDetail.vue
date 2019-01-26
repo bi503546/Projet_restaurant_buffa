@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <router-link :to="{ name: 'restaurants'}">Accueil</router-link>
     <md-card>
       <md-card-header>
         {{restaurant.name}}
@@ -12,7 +13,7 @@
       <md-card-content v-if="restaurant.grades !== null">
         Grades :
         <ul>
-          <li v-for="grade in restaurant.grades">
+          <li v-for="grade in restaurant.grades" :key="grade">
             {{grade.grade}} <span style="color: grey; font-style: italic; font-size: 90%">( score of {{grade.score}} at {{grade.date}} )</span>
           </li>
         </ul>

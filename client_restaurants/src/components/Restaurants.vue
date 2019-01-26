@@ -35,17 +35,19 @@
       <img src="../css/img/seperateur.png" alt="">
     </div>
     <div class="miseEnFormeTable">
-      <app-restau  v-for="r in restaurants" :key="r.id" :restau="r"></app-restau>
+      <app-restau  v-for="r in restaurants" :key="r.id" :restau="r" @toModify="restaurantToModify"></app-restau>
     </div>
     <div class="navigation" >
       <button class="button" v-on:click="premierePage" v-bind:class="{active : page === 0}">Page 1</button>
-      <button class="button" v-on:click="pagePrecedente" v-if="page > 1"><</button>
+      <button class="button" v-on:click="
+/* eslint-disable vue/no-parsing-error */
+pagePrecedente" v-if="page > 1"> < </button>
       <button class="button active" v-if="page !== 0 && page !== getDernierePage()">{{page+1}}</button>
       <button class="button" v-on:click="pageSuivante" v-if="page < getDernierePage() - 1">></button>
       <button class="button" v-on:click="dernierePage" v-bind:class="{active : page === getDernierePage()}">Page {{getDernierePage()+1}}</button>
     </div>
     <img src="../css/img/seperateur.png" alt="">
-    <div id="modify" v-if="restaurantToModify !== null">
+    <div id="modify" v-if="restaurantToModify !== 0">
       <h2>Modifier un restaurant</h2>
       <form v-on:submit="modifierRestaurant">
         <label>
@@ -90,7 +92,7 @@ export default {
       pagesize: 10,
       name: '',
       addForm: false,
-      restaurantToModify: null
+      restaurantToModify: 0
     }
   },
   mounted () {
@@ -231,6 +233,7 @@ export default {
       return parseInt(res)
     },
 
+    // eslint-disable-next-line no-undef
     chercherRestaurants: _.debounce(function () {
       this.page = 0
       this.getRestaurantsFromServer()
